@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Insert title here</title>
+
+  <script>
+    function getDog() {
+
+      var xmlhttp = new XMLHttpRequest();
+      xmlhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+          var jsondog = this.responseText;
+          document.getElementById("resultone").innerHTML = jsondog;
+          var dog = JSON.parse(jsondog);
+          printOneDog(dog);
+        }
+      };
+
+      xmlhttp.open("GET", "/demo/rest/lego/getonedog/3", true);
+      xmlhttp.send();
+    }
+
+    function printOneDog(d) {
+      var s = "<ul>";
+      s = s + "<li>" + d.id;
+      s = s + "<li>" + d.breed;
+      s = s + "<li>" + d.weight;
+      s = s + "<ul>";
+      document.getElementById("result").innerHTML = s;
+    }
+
+  </script>
+</head>
+
+<body>
+  <button onclick="getDog();">Click here</button>
+  <p id="resultone">JSON comes here</p>
+  <div id='result'></div>
+</body>
+
+</html>

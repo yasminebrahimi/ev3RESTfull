@@ -1,0 +1,5 @@
+rest\HunterService.class
+data\Dog.class
+data\Prey.class
+services\LegoService.class
+client\DogClient.class
